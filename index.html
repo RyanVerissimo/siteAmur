@@ -8,286 +8,54 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
     />
-    <title>Nosso Amor</title>
-    <style>
-        :root {
-            --cor-texto: #000000;
-        }
-        body {
-            font-family: 'Dancing Script', cursive;
-            background-color: #530a04;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            color: var(--cor-texto);
-            cursor: url('heart-cursor.svg'), auto;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            margin-top: 80px;
-        }
-        .photo-section {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-in-out;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            border: 2px solid #ffcccc;
-        }
-        .photo-section img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-        }
-        .photo-section p {
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .photo-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .header {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            font-size: 32px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .counter {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            width: auto;
-            min-width: 250px;
-            animation: slideDown 1s ease-in-out;
-        }
-        .music {
-            margin-top: 20px;
-        }
-        .photo-group {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .photo-group img {
-            width: calc(33.33% - 10px);
-            max-width: 150px;
-            height: auto;
-            box-sizing: border-box;
-        }
-        .heart, .bear {
-            position: absolute;
-            animation: slideIn 1.5s ease-out forwards, pulse 2s infinite alternate, rotate 3s linear infinite;
-            opacity: 0;
-            font-size: 3rem;
-            z-index: 500;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .heart {
-            color: #ff0066;
-        }
-        .bear {
-            color: #ffcc00;
-        }
-        .nomeCasal {
-            margin-bottom: 10px;
-            font-size: 1.8rem;
-            color: #FFFFFF;
-            font-weight: 700;
-        }
-
-        #playButton {
-            border: none;
-            background: transparent;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 64px;
-            transition: .3s;
-            animation: scaleLoop 1s infinite alternate;
-            cursor: pointer;
-        }
-        #playButton:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes scaleLoop {
-            0% {
-                transform: scale(1); /* Tamanho original */
-            }
-            100% {
-                transform: scale(1.1); /* Tamanho aumentado */
-            }
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.2);
-            }
-        }
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        @keyframes slideDown {
-            0% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ffcccc;
-            border-radius: 50%;
-            opacity: 0;
-            animation: particle 3s linear infinite;
-        }
-        @keyframes particle {
-            0% {
-                transform: translateY(0) translateX(0) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(calc(100vh + 20px)) translateX(calc(100vw * 0.5)) scale(0);
-                opacity: 0;
-            }
-        }
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-                margin-top: 40px;
-            }
-            .photo-section img {
-                max-width: 100%;
-            }
-            .photo-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            .photo-group img {
-                width: 100%;
-                max-width: 300px;
-            }
-            .counter {
-                position: static;
-                transform: none;
-                margin: 20px auto;
-            }
-        }
-        .slideInLeft {
-            animation: slideInLeft 1s ease-in-out forwards;
-        }
-        .slideInRight {
-            animation: slideInRight 1s ease-in-out forwards;
-        }
-        @keyframes slideInLeft {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-            0% { transform: translateX(100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Nosso Amor</title>
 </head>
 <body>
     <div class="counter">
         <span id="time-count"></span>
     </div>
     <div class="container">
-        <div class="photo-section">
+        <div class="photo-section" data-aos="fade-down-right" data-aos-duration="1500">
             <h2>Dê um play, para ver um pouco da nossa história!</h2>
             <button id="playButton"><i class="ph ph-play-circle"></i></button>
         </div>
-        <div class="header">
+        <div class="header" data-aos="fade-down-left" data-aos-duration="1500">
             <h1>Nosso Amor em Momentos</h1>
         </div>
-        <div class="photo-section">
-            <img src="imagens/primeira.jpg" alt="Descrição da foto 1">
+        <div class="photo-section" data-aos="fade-right" data-aos-duration="1500">
+            <img src="./imagens/primeira.jpg" alt="Descrição da foto 1">
             <p>Esta foi a nossa primeira foto juntos, um momento inesquecível!</p>
         </div>
-        <div class="photo-section">
-            <img src="imagens/segunda.jpg" alt="Descrição da foto 2">
+        <div class="photo-section" data-aos="fade-left" data-aos-duration="1500">
+            <img src="./imagens/segunda.jpg" alt="Descrição da foto 2">
             <p>Aqui está um dos nossos passeios mais divertidos!</p>
         </div>
-        <div class="photo-section">
+        <div class="photo-section" data-aos="flip-right" data-aos-duration="1500">
             <div class="photo-group">
-                <img src="imagens/terceira.jpg" alt="Descrição da foto 3">
-                <img src="imagens/quarta.jpg" alt="Descrição da foto 4">
-                <img src="imagens/quinta.jpg" alt="Descrição da foto 5">
+                <img src="./imagens/terceira.jpg" alt="Descrição da foto 3">
+                <img src="./imagens/quarta.jpg" alt="Descrição da foto 4">
+                <img src="./imagens/quinta.jpg" alt="Descrição da foto 5">
             </div>
             <p>Essas fotos foram tiradas na mesma ocasião, um momento muito especial!</p>
         </div>
-        <div class="photo-section">
-            <img src="imagens/sexta_aliança.jpg" alt="Descrição da foto 6">
+        <div class="photo-section" data-aos="fade-up" data-aos-duration="1500">
+            <img src="./imagens/sexta_aliança.jpg" alt="Descrição da foto 6">
             <p>Este foi o momento em que trocamos alianças, marcando um novo passo na nossa jornada!</p>
         </div>
-        <div class="photo-section">
-            <img src="imagens/setima.jpg" alt="Descrição da foto 7">
+        <div class="photo-section" data-aos="fade-up-right" data-aos-duration="1500">
+            <img src="./imagens/setima.jpg" alt="Descrição da foto 7">
             <p>Nosso último aniversário juntos, comemorado com muito amor!</p>
         </div>
-        <div class="photo-section">
-            <img src="imagens/oitava.jpg" alt="Descrição da foto 8">
+        <div class="photo-section" data-aos="fade-up-left" data-aos-duration="1500">
+            <img src="./imagens/oitava.jpg" alt="Descrição da foto 8">
             <p>Essa foi uma noite inesquecível, cheia de sorrisos e carinho.</p>
         </div>
-        <div class="photo-section">
+        <div class="photo-section" data-aos="flip-left" data-aos-duration="1500">
             <h2>Considerações Finais:</h2>
             <p>Faz o L</p>
         </div>
@@ -299,91 +67,7 @@
             </audio>
         </div>
     </div>
-    <script>
-        window.onload = function() {
-            var audio = document.getElementById('audio');
-            var playButton = document.getElementById('playButton');
-            playButton.addEventListener('click', function() {
-                audio.play().catch(function(error) {
-                    console.log("Erro ao tentar tocar o áudio: ", error);
-                });
-                window.scrollTo(0, 0);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll(".photo-section");
-            const hearts = ["❤️", "", "", "", ""];
-            const bears = ["", "🍫", "‍"];
-            let scrollCount = 0;
-            function checkVisibility() {
-                sections.forEach((section, index) => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 50 && rect.bottom > 0 && index <= scrollCount) {
-                        section.classList.add("visible");
-                        if (Math.random() > 0.5) {
-                            showHeartOrBear(section);
-                        }
-                        if (index % 2 === 0) {
-                            section.classList.add("slideInLeft");
-                        } else {
-                            section.classList.add("slideInRight");
-                        }
-                    }
-                });
-            }
-            function showHeartOrBear(section) {
-                const heartOrBear = Math.random() > 0.5 ? "heart" : "bear";
-                const symbol = heartOrBear === "heart" ? hearts[Math.floor(Math.random() * hearts.length)] : bears[Math.floor(Math.random() * bears.length)];
-                const div = document.createElement("div");
-                div.classList.add(heartOrBear);
-                div.textContent = symbol;
-                const topPosition = Math.random() * (window.innerHeight - 100) + window.scrollY;
-                const leftPosition = Math.random() * (window.innerWidth - 100);
-                div.style.top = `${topPosition}px`;
-                div.style.left = `${leftPosition}px`;
-                document.body.appendChild(div);
-                setTimeout(() => div.remove(), 3000);
-            }
-            window.addEventListener("wheel", function(event) {
-                if (event.deltaY > 0) {
-                    scrollCount++;
-                    checkVisibility();
-                }
-            });
-            checkVisibility();
-            function updateCounter() {
-                const startDate = new Date("2025-02-08T00:00:00");
-                setInterval(() => {
-                    const now = new Date();
-                    let diff = now - startDate;
-                    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-                    diff -= years * (1000 * 60 * 60 * 24 * 365.25);
-                    const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-                    diff -= months * (1000 * 60 * 60 * 24 * 30.44);
-                    const days = Math.round(diff / (1000 * 60 * 60 * 24));
-                    diff -= days * (1000 * 60 * 60 * 24);
-                    const hours = Math.floor(diff / (1000 * 60 * 60));
-                    diff -= hours * (1000 * 60 * 60);
-                    const minutes = Math.floor(diff / (1000 * 60));
-                    diff -= minutes * (1000 * 60);
-                    const seconds = Math.floor(diff / 1000);
-                    document.getElementById("time-count").textContent = `${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
-                }, 1000);
-            }
-            updateCounter();
-            function createParticles() {
-                for (let i = 0; i < 20; i++) {
-                    const particle = document.createElement("div");
-                    particle.classList.add("particle");
-                    particle.style.left = `${Math.random() * 100}vw`;
-                    particle.style.top = `${Math.random() * 100}vh`;
-                    particle.style.animationDelay = `${Math.random() * 3}s`;
-                    document.body.appendChild(particle);
-                }
-            }
-            createParticles();
-        });
-    </script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>
 </html>
