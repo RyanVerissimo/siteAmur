@@ -1,5 +1,16 @@
 AOS.init();
 
+document.getElementById("carta").addEventListener("click", function() {
+    let texto = document.querySelector(".texto-consideracao");
+    let computedStyle = window.getComputedStyle(texto); 
+    if (computedStyle.display === "none") {
+        texto.style.display = "block";
+    } else {
+        texto.style.display = "none";
+    }
+});
+
+
 window.onload = function() {
     var audio = document.getElementById('audio');
     var playButton = document.getElementById('playButton');
